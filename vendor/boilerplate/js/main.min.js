@@ -1,0 +1,13 @@
+(function(){var e;var d=function(){};var b=["assert","clear","count","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","table","time","timeEnd","timeStamp","trace","warn"];
+var c=b.length;var a=(window.console=window.console||{});while(c--){e=b[c];if(!a[e]){a[e]=d;}}}());(function(a){window.MBP=window.MBP||{};MBP.viewportmeta=a.querySelector&&a.querySelector('meta[name="viewport"]');
+MBP.ua=navigator.userAgent;MBP.scaleFix=function(){if(MBP.viewportmeta&&/iPhone|iPad|iPod/.test(MBP.ua)&&!/Opera Mini/.test(MBP.ua)){MBP.viewportmeta.content="width=device-width, minimum-scale=1.0, maximum-scale=1.0";
+a.addEventListener("gesturestart",MBP.gestureStart,false);}};MBP.gestureStart=function(){MBP.viewportmeta.content="width=device-width, minimum-scale=0.25, maximum-scale=1.6";
+};MBP.BODY_SCROLL_TOP=false;MBP.getScrollTop=function(){var c=window;var b=a;return c.pageYOffset||b.compatMode==="CSS1Compat"&&b.documentElement.scrollTop||b.body.scrollTop||0;
+};MBP.hideUrlBar=function(){var b=window;if(!location.hash&&MBP.BODY_SCROLL_TOP!==false){b.scrollTo(0,MBP.BODY_SCROLL_TOP===1?0:1);}};MBP.hideUrlBarOnLoad=function(){var d=window;
+var c=d.document;var b;if(!location.hash&&d.addEventListener){window.scrollTo(0,1);MBP.BODY_SCROLL_TOP=1;b=setInterval(function(){if(c.body){clearInterval(b);
+MBP.BODY_SCROLL_TOP=MBP.getScrollTop();MBP.hideUrlBar();}},15);d.addEventListener("load",function(){setTimeout(function(){if(MBP.getScrollTop()<20){MBP.hideUrlBar();
+}},0);});}};MBP.autogrow=function(d,b){function e(h){var g=this.scrollHeight;var i=this.clientHeight;if(g>i){this.style.height=g+3*f+"px";}}var c=(b)?b:12;
+var f=d.currentStyle?d.currentStyle.lineHeight:getComputedStyle(d,null).lineHeight;f=(f.indexOf("px")==-1)?c:parseInt(f,10);d.style.overflow="hidden";d.addEventListener?d.addEventListener("input",e,false):d.attachEvent("onpropertychange",e);
+};MBP.enableActive=function(){a.addEventListener("touchstart",function(){},false);};MBP.preventScrolling=function(){a.addEventListener("touchmove",function(b){if(b.target.type==="range"){return;
+}b.preventDefault();},false);};MBP.preventZoom=function(){var c=a.querySelectorAll("input, select, textarea");var d="width=device-width,initial-scale=1,maximum-scale=";
+var b=0;for(b=0;b<c.length;b++){c[b].onfocus=function(){MBP.viewportmeta.content=d+"1";};c[b].onblur=function(){MBP.viewportmeta.content=d+"10";};}};})(document);

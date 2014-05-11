@@ -1,0 +1,48 @@
+<?php
+require_once('build_metaboxes.php');
+
+/************************************************************************
+ * This is where you can build your metaboxes and custom fields. Each 
+ * new instance of BuildMetabox will create a box of the specified 
+ * custom fields in the specified post type. Example below.
+ *
+ * There are several types of custom fields that can be built, they are:
+ *    - text
+ *    - textarea
+ *    - checkbox
+ *    - select
+ *    - steps_meta (this is the dynamic metabox type seen on HowSpot)
+ ************************************************************************/
+
+/*
+  $exampleMetaBox = new BuildMetabox(
+    'my-metabox', // metabox ID: for use by the theme, set it and forget it
+    'Custom Fields', // metabox title: will appear on the post edit page above the box
+    'landing_pages', // post type: the type of posts you'd like the box to appear on
+    array( // this is an array containing the custom fields
+      array( // each of these nested arrays equals a single custom field
+        'label' => 'Example Label:', // The label appearing above the field
+        'desc' => 'Put a short description of the field here',
+        'id-suffix' => '-field', // this will be appended to the metabox ID to make the field ID (eg., in this case, 'my-metabox-field')
+        'type' => 'text' // The type of custom field you'd like to build, see list above
+      ),
+      array( // a second example custom field for this metabox
+        'label' => 'Example 2 Label:',
+        'desc' => 'Put another short description of the field here',
+        'id-suffix' => '-field-2', 
+        'type' => 'select',
+        'options' => array( // select custom fields require options for their drop downs, those go here
+          array(
+            'label' => 'label goes here',
+            'value' => 'value goes here'
+          ),
+          array(
+            'label' => 'label goes here',
+            'value' => 'value goes here'
+          )
+        )
+      )
+    )
+  ); 
+*/
+?>

@@ -1,0 +1,36 @@
+.clearfix:before, .clearfix:after { content: "."; display: block; height: 0; overflow: hidden; }
+.clearfix:after { clear: both; }
+.clearfix { zoom: 1; }
+
+/* search engines blocked message to match .button-primary */
+#privacy-on-link { 
+	color: #fff !important; 
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+	background: #21759B url(../../../../../wp-admin/images/button-grad.png) repeat-x scroll left top; 
+	padding: 3px 11px !important; 
+	-moz-border-radius: 11px; 
+	-webkit-border-radius: 11px; 
+	border-radius: 11px; 
+	border: 1px solid #298CBA; 
+	font-weight: 700; 
+	font-family: "Lucida Grande", Verdana, Arial, "Bitstream Vera Sans", sans-serif;
+	margin-left: 6px;
+	line-height: 13px !important;
+} 
+#privacy-on-link:hover { text-decoration: none !important; border: 1px solid #13455B; color: #EAF2FA !important; }
+
+#editorcontainer #content {
+	font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
+	font-size: 14px;
+}
+
+#normal-sortables textarea{width:100%}
+#normal-sortables input{margin:0 5px;}
+
+.pixels code{border:1px solid #999; background-color:#CCC; margin:3px 0; padding:8px; font-size:10px; width:600px; display:block;}
+.pixels h3{margin:22px 0 1px 0; line-height:1.4em; padding: 4px; background-color:#EFF8F7}
+.pixels h4{font-weight:bold; margin: 8px 0;}
+.pixels .Enabled{color:green; text-indent:22px; line-height:20px; background-image:url(/wp-content/plugins/TRPlugin/images/enabled.png); background-repeat:no-repeat; }
+.pixels .Disabled{color:red;  text-indent:22px; line-height:20px; background-image:url(/wp-content/plugins/TRPlugin/images/disabled.png); background-repeat:no-repeat;}
+.pixels{}
+.pixels{}

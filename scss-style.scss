@@ -1,0 +1,36 @@
+/*
+Theme Name: Ace of Base Install 2.0
+Authors: Dale, Luke, Andy;
+Version: 2.0
+*/
+
+// ==== Media Query logic to enable 'respond' function ====
+
+$sm_width: 680px;
+$md_width: 768px;
+
+@mixin respond($width) {
+  @if $width == mobile {
+    @media all and (max-width: $sm_width) { @content; }
+  } @else if $width == tablet {
+    @media all and (min-width: $sm_width + 1) and (max-width: $md_width) { @content; }
+  } @else if $width == desktop {
+    @media all and (min-width: $md_width + 1) { @content; }
+  }
+}
+
+/* ==== Base Media Queries for phone, tablet and desktop ==== */
+/* All Phone Devices */
+@include respond(mobile) {
+
+}
+
+/* All Tablet Devices */
+@include respond(tablet) {
+
+}
+
+/* All Desktop Devices */
+@include respond(desktop) {
+
+}
