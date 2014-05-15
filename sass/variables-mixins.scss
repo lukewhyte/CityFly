@@ -1,0 +1,17 @@
+$orange: #FF7400;
+$offBlack: #222;
+
+$sm_width: 680px;
+$md_width: 768px;
+
+$dosis: 'Dosis', sans-serif;
+
+@mixin respond($width) {
+  @if $width == mobile {
+    @media all and (max-width: $sm_width) { @content; }
+  } @else if $width == tablet {
+    @media all and (max-width: $md_width) { @content; }
+  } @else if $width == desktop {
+    @media all and (min-width: $md_width + 1) { @content; }
+  }
+}

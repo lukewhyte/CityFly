@@ -1,1 +1,7 @@
-@import url(scss-style.css);
+/*
+Theme Name: CityFly Theme
+Author: Luke Whyte
+Author URI: http://github.com/lukewhyte/
+Version: 1.0
+*/
+@import url(sass/scss-style.css);

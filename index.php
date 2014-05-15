@@ -15,8 +15,7 @@ get_header(); ?>
         <![endif]-->
 <!-- make sure to close header in your template -->
 
-
-<?php get_template_part('loop', 'landing_page'); ?>
+<?php get_template_part('loop', 'single'); ?>
 
           
 <!-- Site wide footer (can be removed if customization is needed) --> 
