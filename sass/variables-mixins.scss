@@ -1,10 +1,10 @@
-$orange: #FF7400;
+$orange: #F97F16;
 $offBlack: #222;
 
 $sm_width: 680px;
 $md_width: 768px;
 
-$dosis: 'Dosis', sans-serif;
+$roboto: 'Roboto', sans-serif;
 
 @mixin respond($width) {
   @if $width == mobile {

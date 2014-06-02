@@ -28,7 +28,7 @@ class CustomPosts {
       'show_ui' => true,
       'show_in_menu' => true,
       'menu_position' => 10,
-      'menu_icon' => '/assets/beer_icon.png',
+      'menu_icon' => '/wp-content/uploads/beer_icon.png',
       'show_in_nav_menus' => true,
       'publicly_queryable' => true,
       'exclude_from_search' => false,

@@ -4,10 +4,6 @@ jQuery(function($) {
       getField = function(e) {
         if ($(e.target).hasClass('add-headline')) {
           return $(e.target).closest('td').find('.custom_repeatable li.headline:last').clone(true);
-        } else if ($(e.target).hasClass('add-img')) {
-          return $(e.target).closest('td').find('.custom_repeatable li.img:last').clone(true);
-        } else if ($(e.target).hasClass('add-step')) {
-          return $(e.target).closest('td').find('.custom_repeatable li.tbox:last').clone(true);
         } else { return null; }
       },
       setIndex = function(name, n) {

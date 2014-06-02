@@ -26,7 +26,8 @@ class ScriptLoader {
       'jquery-mobile-custom' => THEME_ROOT_URL."/vendor/jquerymobile/js/jquery.mobile.custom.js",
 
       //Page specific scripts
-      'scripts' => STYLE_ROOT."/js/scripts.js"
+      // 'slideshow' => THEME_ROOT_URL.'/js/slideshow.js',
+      'scripts' => THEME_ROOT_URL."/js/scripts.js"
     );
   }
 

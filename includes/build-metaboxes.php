@@ -5,14 +5,15 @@ class BuildMetabox {
   private $id = null;
   private $title = null;
   private $postType = null;
-  private $moveBtn = '<span class="sort hndle">|||</span>';
-  private $deleteBtn = '<a class="repeatable-remove button" href="#">-</a>';
+  private $moveBtn = '<span style="margin-right:5px;" class="sort hndle">|||</span>';
+  private $deleteBtn = '<a class="repeatable-remove button" style="margin-left:5px;" href="#">-</a>';
 
-  public function __construct($id, $title, $postType, $fields) {
+  public function __construct($id, $title, $postType, $position, $fields) {
     global $post;
-    $this->customMetaFields = self::buildMetaFields($id, $fields);
+    $this->customMetaFields = self::buildMetaFields($fields);
     $this->id = $id;
     $this->title = $title;
+    $this->position = $position;
     $this->postType = $postType;
 
     add_action('add_meta_boxes', array($this, 'addNewMetaBox'));
@@ -33,19 +34,19 @@ class BuildMetabox {
       $this->title,
       array($this, 'buildMetaBox'), // $callback
       $this->postType,
-      'normal', // $context
+      $this->position, // $context
       'high' // $priority
     );
   }
 
   // Build the customMetaFields arrays used by buildMetaBox
-  private static function buildMetaFields($prefix, $fields) {
+  private static function buildMetaFields($fields) {
     $cmf = array();
     foreach ($fields as $field) {
       $cmf[] = array(
         'label' => $field['label'],
         'desc' => $field['desc'],
-        'id' => $prefix.$field['id-suffix'],
+        'id' => $field['id'],
         'type' => $field['type']
       );
     }
@@ -67,34 +68,32 @@ class BuildMetabox {
       switch ($field['type']) {
         // text
         case 'text':
-          echo '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" />
+          $dom .= '<input type="text" name="'.$field['id'].'" id="'.$field['id'].'" value="'.$meta.'" size="30" style="width:80%;" />
                 <br /><span class="description">'.$field['desc'].'</span>';
         break;
         // textarea
         case 'textarea':
-          echo '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
+          $dom .= '<textarea name="'.$field['id'].'" id="'.$field['id'].'" cols="60" rows="4">'.$meta.'</textarea>
                 <br /><span class="description">'.$field['desc'].'</span>';
         break;
         // checkbox
         case 'checkbox':
-          echo '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" ',$meta ? ' checked="checked"' : '','/>
+          $dom .= '<input type="checkbox" name="'.$field['id'].'" id="'.$field['id'].'" '.$meta ? ' checked="checked"' : ''.'/>
                 <label for="'.$field['id'].'">'.$field['desc'].'</label>';
         break;
         // select
         case 'select':
-          echo '<select name="'.$field['id'].'" id="'.$field['id'].'">';
+          $dom .= '<select name="'.$field['id'].'" id="'.$field['id'].'">';
           foreach ($field['options'] as $option) {
-            echo '<option', $meta == $option['value'] ? ' selected="selected"' : '', ' value="'.$option['value'].'">'.$option['label'].'</option>';
+            $dom .= '<option'. $meta == $option['value'] ? ' selected="selected"' : ''. ' value="'.$option['value'].'">'.$option['label'].'</option>';
           }
-          echo '</select><br /><span class="description">'.$field['desc'].'</span>';
+          $dom .= '</select><br /><span class="description">'.$field['desc'].'</span>';
         break;
         // These are dynamic, reorderable metaboxes
-        case 'steps_meta':
+        case 'dynamic_list':
           $i = 0;
-          $dom .= '<span style="display: inline-block; margin-top: 5px;">Add Headline:</span> 
-                  <a class="add-headline button" href="#">+</a>&nbsp;&nbsp;';
-          $dom .= '<span>Add Step:</span> <a class="add-step button" href="#">+</a>&nbsp;&nbsp;';
-          $dom .= '<span>Add Image:</span> <a class="add-img button" href="#">+</a>';
+          $dom .= '<span style="display: inline-block; margin-top: 5px;">Add New:</span> 
+                  <a class="add-headline button" href="#">+</a>';
           $dom .= '<ul id="'.$field['id'].'-repeatable" class="custom_repeatable">';
           if ($meta) {
             foreach ($meta as $row) {
@@ -120,14 +119,6 @@ class BuildMetabox {
       $input = '<input type="text" name="'.$id.'['.$i.'][headline]" 
                 class="steps-headline" size="30" value="'.$row['headline'].'" style="width:70%;" />';
       return '<li class="headline">'.$this->moveBtn.$input.$this->deleteBtn.'</li>';
-    } elseif (isset($row['img'])) {
-      $input = '<input type="text" name="'.$id.'['.$i.'][img]" class="steps-img" 
-                size="30" value="'.$row['img'].'" style="width:70%;background: #FFCCCC;" />';
-      return '<li class="img">'.$this->moveBtn.$input.$this->deleteBtn.'</li>';
-    } elseif (isset($row['textbox'])) {
-      $input = '<textarea name="'.$id.'['.$i.'][textbox]" class="steps-textbox" cols="60" 
-                rows="4" style="width:70%;">'.$row['textbox'].'</textarea>';
-      return '<li class="tbox">'.$this->moveBtn.$input.$this->deleteBtn.'</li>';
     }
   }
 
@@ -136,17 +127,7 @@ class BuildMetabox {
     return '
       <li class="headline">'
         .$this->moveBtn
-        .'<input placeholder="Headline" name="'.$id.'[0][headline]" class="steps-headline" value="" size="30" style="width:70%;" />'
-        .$this->deleteBtn
-      .'</li>
-      <li class="img">'
-        .$this->moveBtn
-        .'<input placeholder="Image" name="'.$id.'[1][img]" class="steps-img" value="" style="width:70%;background: #FFCCCC;" size="30" />'
-        .$this->deleteBtn
-      .'</li>
-      <li class="tbox">'
-        .$this->moveBtn
-        .'<textarea placeholder="Step" name="'.$id.'[2][textbox]" class="steps-textbox" style="width:70%;" cols="60" rows="4"></textarea>'
+        .'<input placeholder="Enter Here" name="'.$id.'[0][headline]" class="steps-headline" value="" size="30" style="width:70%;" />'
         .$this->deleteBtn
       .'</li>
     ';

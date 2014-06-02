@@ -1,0 +1,3 @@
+<script>
+// $('.slideshow').horizontalSlider();
+</script>

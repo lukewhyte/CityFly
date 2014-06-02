@@ -5,7 +5,7 @@ require_once('style-loader.php');
 
 include_once('includes/custom-posts.php');
 include_once('includes/custom-taxonomies.php');
-// include_once('includes/theme-metaboxes.php');
+include_once('includes/theme-metaboxes.php');
 
 // tell the TinyMCE editor to use editor-style.css
 // if you have issues with getting the editor to show your changes then use the following line:
