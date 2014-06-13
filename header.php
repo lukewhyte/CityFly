@@ -14,9 +14,9 @@
 	<?php StyleLoader::addStyle('style'); ?>
 
 	<!-- base script files --> 
-	<?php ScriptLoader::addScript('boilerplate-modernizr'); ?>
-	<?php ScriptLoader::addScript('boilerplate-main', true); ?>
+	<?php ScriptLoader::addScript('jQuery', true); ?>
 	<?php ScriptLoader::addScript('slideshow', true); ?>
+	<?php ScriptLoader::addScript('scripts', true); ?>
 
 	<!-- wp_head() -->
 	<?php wp_head(); ?>

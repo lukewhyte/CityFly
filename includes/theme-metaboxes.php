@@ -29,7 +29,7 @@ $barRestaurant = new BuildMetabox(
       'label' => 'Photos:',
       'desc' => 'Add fields by clicking \'+\'. Remove by clicking \'-\'. Reorder with \'|||\'.',
       'id' => 'photos',
-      'type' => 'dynamic_list'
+      'type' => 'slideshow'
     ),
     array(
       'label' => 'Website URL',
@@ -41,7 +41,7 @@ $barRestaurant = new BuildMetabox(
       'label' => 'Links:',
       'desc' => 'Add fields by clicking \'+\'. Remove by clicking \'-\'. Reorder with \'|||\'.',
       'id' => 'links',
-      'type' => 'dynamic_list'
+      'type' => 'links'
     ),
     array(
       'label' => 'Facebook',

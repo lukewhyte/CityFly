@@ -21,12 +21,13 @@ class ScriptLoader {
       'bootstrap' => THEME_ROOT_URL."/vendor/bootstrap/bootstrap.min.js",
       'bootstrap-modernizr' => THEME_ROOT_URL."/vendor/boilerplate/js/modernizr-2.6.2-respond-1.1.0.min.js",
 
-      //CDN for jQuery Mobile
+      //CDN for jQuery
+      'jQuery' => '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js',
       'jquery-mobile' => "//code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js",
       'jquery-mobile-custom' => THEME_ROOT_URL."/vendor/jquerymobile/js/jquery.mobile.custom.js",
 
       //Page specific scripts
-      // 'slideshow' => THEME_ROOT_URL.'/js/slideshow.js',
+      'slideshow' => THEME_ROOT_URL.'/js/slideshow.js',
       'scripts' => THEME_ROOT_URL."/js/scripts.js"
     );
   }

@@ -133,8 +133,28 @@ header .wrapper .logo span {
   float: left;
 }
 .wrapper .left .photos .slideshowImg {
-  width: 96%;
-  height: auto;
+  width: 614px;
+  height: 409px;
+}
+.wrapper .left .photos .slider-btns {
+  position: absolute;
+  top: 372px;
+  left: 12px;
+}
+.wrapper .left .photos .slider-btns .back,
+.wrapper .left .photos .slider-btns .forward {
+  width: 0;
+  height: 0;
+  border-top: 14px solid transparent;
+  border-bottom: 14px solid transparent;
+  float: left;
+}
+.wrapper .left .photos .slider-btns .back {
+  border-right: 14px solid white;
+}
+.wrapper .left .photos .slider-btns .forward {
+  border-left: 14px solid white;
+  margin-left: 15px;
 }
 .wrapper .left .main {
   margin-top: 20px;

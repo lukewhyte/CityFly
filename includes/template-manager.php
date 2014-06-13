@@ -10,7 +10,7 @@ class TemplateManager {
 	public function buildSlideshow() {
 		global $post;
 		$photos = self::displayMeta('photos');
-		if (count($photos) < 2) return '<img src="' . $photos[0]['headline'] . '" class="slideshowImg" />';
+		if (count($photos) < 2) return '<img src="' . $photos[0] . '" class="slideshowImg" />';
 		else {
 			$toDom = '<div class="slideshow">';
 			for ($i = 0; $i < count($photos); $i++) {

@@ -3,7 +3,7 @@ jQuery(function($) {
       field, fieldLocation, fieldInput,
       getField = function(e) {
         if ($(e.target).hasClass('add-headline')) {
-          return $(e.target).closest('td').find('.custom_repeatable li.headline:last').clone(true);
+          return $(e.target).closest('td').find('.custom_repeatable li:last').clone(true);
         } else { return null; }
       },
       setIndex = function(name, n) {

@@ -90,18 +90,34 @@ class BuildMetabox {
           $dom .= '</select><br /><span class="description">'.$field['desc'].'</span>';
         break;
         // These are dynamic, reorderable metaboxes
-        case 'dynamic_list':
+        case 'slideshow':
           $i = 0;
           $dom .= '<span style="display: inline-block; margin-top: 5px;">Add New:</span> 
                   <a class="add-headline button" href="#">+</a>';
           $dom .= '<ul id="'.$field['id'].'-repeatable" class="custom_repeatable">';
           if ($meta) {
             foreach ($meta as $row) {
-              $dom .= $this->setDynamicInputTypes($field['id'], $row, $i);
+              $dom .= $this->setDynamicInputs($field['id'], 'photo', false, $row, $i);
               $i++;
             }
           } else {
-            $dom .= $this->defaultInputSet($field['id']);
+            $dom .= $this->setDynamicInputs($field['id'], 'photo', true);
+          }
+          $dom .= '</ul>
+                <span class="description">'.$field['desc'].'</span>';
+        break;
+        case 'links':
+          $i = 0;
+          $dom .= '<span style="display: inline-block; margin-top: 5px;">Add New:</span> 
+                  <a class="add-headline button" href="#">+</a>';
+          $dom .= '<ul id="'.$field['id'].'-repeatable" class="custom_repeatable">';
+          if ($meta) {
+            foreach ($meta as $row) {
+              $dom .= $this->setDynamicInputs($field['id'], 'link', false, $row, $i);
+              $i++;
+            }
+          } else {
+            $dom .= $this->setDynamicInputs($field['id'], 'link', true);
           }
           $dom .= '</ul>
                 <span class="description">'.$field['desc'].'</span>';
@@ -113,24 +129,20 @@ class BuildMetabox {
     echo $dom;
   }
 
-  // Used by 'type' => 'steps_meta' to build inputs from existing metadata
-  private function setDynamicInputTypes($id, $row, $i) {
-    if (isset($row['headline'])) {
-      $input = '<input type="text" name="'.$id.'['.$i.'][headline]" 
-                class="steps-headline" size="30" value="'.$row['headline'].'" style="width:70%;" />';
-      return '<li class="headline">'.$this->moveBtn.$input.$this->deleteBtn.'</li>';
+  private function setDynamicInputs($id, $class, $new = true, $row = false, $i = false) {
+    if ($new === false) {
+      $input = '<input type="text" name="'.$id.'['.$i.']" 
+                  class="'.$class.'-input" size="30" value="'.$row.'" style="width:70%;" />';
+      return '<li class="'.$class.'">'.$this->moveBtn.$input.$this->deleteBtn.'</li>';
+    } else {
+      return '
+        <li class="'.$class.'">'
+          .$this->moveBtn
+          .'<input placeholder="Enter Here" name="'.$id.'[0]" class="'.$class.'-input" value="" size="30" style="width:70%;" />'
+          .$this->deleteBtn
+        .'</li>
+      ';
     }
-  }
-
-  // Used by 'type' => 'steps_meta' to build empty inputs when no metadata exists
-  private function defaultInputSet($id) {
-    return '
-      <li class="headline">'
-        .$this->moveBtn
-        .'<input placeholder="Enter Here" name="'.$id.'[0][headline]" class="steps-headline" value="" size="30" style="width:70%;" />'
-        .$this->deleteBtn
-      .'</li>
-    ';
   }
 
   public function saveCustomMeta($post_id) {
